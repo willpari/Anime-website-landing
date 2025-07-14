@@ -1,0 +1,7 @@
+body {
+    background-color: #000000;
+    background-image: url("/img/chainsaw-man-anime-4k-wallpaper-uhdpaper\ 1.png"); /* Especifica la ruta a tu imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-position: center center; /* Centra la imagen */
+    background-attachment: fixed; /* Mantiene la imagen fija al hacer scroll (opcional) */
+}
