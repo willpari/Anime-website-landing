@@ -1,19 +1,52 @@
 body {
-  background-image: url("img/chainsaw-man-anime-4k-wallpaper-uhdpaper\ 1.png");
+  background-image: url("img/Landing\ Page.png");
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 .header_nav ul {
-  list-style: none;
+    list-style: none; /* Quita los puntos de la lista */
+    margin: 0;
+    padding: 0;
+    display: flex; /* Convierte el UL en un contenedor flex */
+    align-items: center; /* Centra los ítems verticalmente */
+    width: 100%; /* Asegura que el UL ocupe todo el ancho */
+    max-width: 1200px; /* Opcional: para limitar el ancho máximo de la nav */
+    margin: 0 auto; /* Centra la nav dentro del header si tiene un max-width */
 }
 
-.header_nav li {
-  display: inline-block;
-  margin: 0 20px;
+.header_nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block; /* Para que el padding funcione en los enlaces */
 }
 
-.header_nav a {
-  text-decoration: none; 
-  color: white;
+.header_nav ul li a img {
+    height: 20px; /* Ajusta el tamaño de los iconos si es necesario */
+    vertical-align: middle; /* Alinea verticalmente la imagen con el texto si hubiera */
+}
+
+/* --- REGLAS CLAVE PARA LA DISTRIBUCIÓN --- */
+
+/* Empuja "ZORO.to" hacia el centro */
+.center-item {
+    margin-left: auto; /* Empuja el elemento a la derecha de los anteriores */
+    margin-right: auto; /* Empuja el elemento a la izquierda de los siguientes */
+}
+
+/* Opcional: Si quieres un poco de espacio entre los grupos de la izquierda */
+.left-group:not(:last-of-type) {
+    margin-right: 5px; /* Pequeño espacio entre los elementos del grupo izquierdo */
+}
+
+/* Opcional: Si quieres un poco de espacio entre los grupos de la derecha */
+.right-group:not(:last-of-type) {
+    margin-right: 5px; /* Pequeño espacio entre los elementos del grupo derecho */
+}
+
+/* Ajustes específicos para los enlaces */
+.header_nav ul li a:hover {
+    background-color: #575757;
+    border-radius: 5px;
 }
