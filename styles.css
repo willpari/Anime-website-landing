@@ -1,52 +1,264 @@
+/*
+ * Archivo: styles.css
+ * Descripción: Hoja de estilos CSS para la página de aterrizaje.
+ * Este archivo define la apariencia visual del encabezado, la navegación,
+ * la sección principal ("hero-section") con el contenido del anime,
+ * y los elementos interactivos como botones y estrellas de calificación.
+ */
+
+/* ==================================== */
+/* ESTILOS DEL CUERPO (BODY)            */
+/* ==================================== */
 body {
-  background-image: url("img/Landing\ Page.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.header_nav ul {
-    list-style: none; /* Quita los puntos de la lista */
+    /* Establece la imagen de fondo principal de la página.
+     * La ruta "img/Landing Page.png" debe ser la ubicación de tu imagen de fondo principal.
+     */
+    background-image: url("img/Landing Page.png");
+    /* Asegura que la imagen de fondo cubra completamente el área del body,
+     * escalándola si es necesario y recortando los bordes.
+     */
+    background-size: cover;
+    /* Evita que la imagen de fondo se repita si no cubre todo el espacio. */
+    background-repeat: no-repeat;
+    /* Elimina los márgenes predeterminados que los navegadores añaden al body. */
     margin: 0;
+}
+
+/* ==================================== */
+/* ESTILOS DE LA BARRA DE NAVEGACIÓN (HEADER_NAV) */
+/* ==================================== */
+.header_nav ul {
+    /* Elimina los marcadores de lista predeterminados (puntos o números). */
+    list-style: none;
+    /* Elimina los márgenes predeterminados de la lista. */
+    margin: 0;
+    /* Elimina el relleno predeterminado de la lista. */
     padding: 0;
-    display: flex; /* Convierte el UL en un contenedor flex */
-    align-items: center; /* Centra los ítems verticalmente */
-    width: 100%; /* Asegura que el UL ocupe todo el ancho */
-    max-width: 1200px; /* Opcional: para limitar el ancho máximo de la nav */
-    margin: 0 auto; /* Centra la nav dentro del header si tiene un max-width */
+    /* Habilita Flexbox para alinear los elementos de la lista horizontalmente. */
+    display: flex;
+    /* Centra los elementos hijos verticalmente dentro del contenedor flex. */
+    align-items: center;
+    /* Asegura que la lista ocupe todo el ancho disponible de su contenedor padre. */
+    width: 100%;
+    /* Limita el ancho máximo de la navegación para mantener la legibilidad
+     * en pantallas muy grandes, centrándola automáticamente.
+     */
+    max-width: 1200px;
+    /* Centra la lista horizontalmente dentro de su contenedor padre. */
+    margin: 0 auto;
 }
 
+/* Estilos para los enlaces dentro de la navegación */
 .header_nav ul li a {
+    /* Color de texto blanco para los enlaces. */
     color: white;
+    /* Elimina el subrayado predeterminado de los enlaces. */
     text-decoration: none;
+    /* Añade relleno alrededor del texto de cada enlace. */
     padding: 10px 15px;
-    display: block; /* Para que el padding funcione en los enlaces */
+    /* Hace que el enlace se comporte como un bloque, permitiendo que el padding sea efectivo. */
+    display: block;
 }
 
+/* Estilos para las imágenes dentro de los enlaces de navegación (ej. íconos de búsqueda, campana) */
 .header_nav ul li a img {
-    height: 20px; /* Ajusta el tamaño de los iconos si es necesario */
-    vertical-align: middle; /* Alinea verticalmente la imagen con el texto si hubiera */
+    /* Define la altura de los íconos. */
+    height: 20px;
+    /* Alinea verticalmente la imagen con el texto (si lo hubiera en el mismo nivel). */
+    vertical-align: middle;
 }
 
-/* --- REGLAS CLAVE PARA LA DISTRIBUCIÓN --- */
-
-/* Empuja "ZORO.to" hacia el centro */
+/* Estilos para el elemento central de la navegación (ej. "ZORO.to") */
 .center-item {
-    margin-left: auto; /* Empuja el elemento a la derecha de los anteriores */
-    margin-right: auto; /* Empuja el elemento a la izquierda de los siguientes */
+    /* Empuja el elemento a la izquierda y a la derecha lo máximo posible,
+     * centrándolo automáticamente entre los grupos izquierdo y derecho.
+     */
+    margin-left: auto;
+    margin-right: auto;
 }
 
-/* Opcional: Si quieres un poco de espacio entre los grupos de la izquierda */
+/* Margen derecho para los elementos del grupo izquierdo, excepto el último. */
+/* Esto crea un espacio entre los elementos "Most Popular", "Movies", "Tv Series". */
 .left-group:not(:last-of-type) {
-    margin-right: 5px; /* Pequeño espacio entre los elementos del grupo izquierdo */
+    margin-right: 5px;
 }
 
-/* Opcional: Si quieres un poco de espacio entre los grupos de la derecha */
+/* Margen derecho para los elementos del grupo derecho, excepto el último. */
+/* Esto crea un espacio entre los íconos de búsqueda, campana y "Login". */
 .right-group:not(:last-of-type) {
-    margin-right: 5px; /* Pequeño espacio entre los elementos del grupo derecho */
+    margin-right: 5px;
 }
 
-/* Ajustes específicos para los enlaces */
-.header_nav ul li a:hover {
-    background-color: #575757;
-    border-radius: 5px;
+/* ==================================== */
+/* SECCIÓN HERO (CONTENIDO PRINCIPAL)   */
+/* ==================================== */
+
+/* Pseudo-elemento ::before para crear una capa de superposición/degradado */
+.hero-section::before {
+    /* Propiedad necesaria para que un pseudo-elemento sea renderizado. */
+    content: '';
+    /* Posiciona el pseudo-elemento de forma absoluta dentro de su padre (.hero-section). */
+    position: absolute;
+    /* Lo coloca en la parte superior del padre. */
+    top: 0;
+    /* Lo coloca en la parte izquierda del padre. */
+    left: 0;
+    /* Asegura que el pseudo-elemento ocupe todo el ancho del padre. */
+    width: 100%;
+    /* Asegura que el pseudo-elemento ocupe toda la altura del padre. */
+    height: 100%;
+    /* Define el orden de apilamiento. z-index: 1 lo coloca debajo del contenido real
+     * pero por encima de la imagen de fondo si .hero-section tuviera una.
+     * Aquí, estará sobre la imagen de fondo del body.
+     */
+    z-index: 1;
+    /* NOTA: No hay un degradado definido aquí en tu código original.
+     * Si deseas un degradado (como se discutió previamente para la legibilidad),
+     * tendrías que añadir una propiedad 'background' con 'linear-gradient' aquí.
+     */
+}
+
+/* Contenedor del contenido textual y botones de la sección hero (ej. información de Chainsaw Man) */
+.hero-content {
+    /* Posiciona el elemento de forma relativa. Esto es crucial para que 'z-index' funcione
+     * y para posicionarlo por encima de la capa ::before si se usa un degradado.
+     */
+    position: relative;
+    /* Asegura que el contenido esté por encima de la capa de superposición (z-index: 1). */
+    z-index: 2;
+    /* Limita el ancho máximo del bloque de texto para mejorar la legibilidad
+     * y evitar que se extienda demasiado en pantallas anchas.
+     */
+    max-width: 500px;
+    /* Añade un espacio interno alrededor del contenido (texto y botones) dentro de este bloque. */
+    padding: 20px;
+    /* Empuja el contenido hacia abajo desde la parte superior.
+     * Este valor (250px) es un ajuste manual. Para un centrado vertical más dinámico
+     * y basado en Flexbox, se requerirían cambios en el contenedor padre (como 'main' o 'hero-section').
+     */
+    margin-top: 250px;
+}
+
+/* Estilos para el texto "#1 Most Popular" */
+.hero-content .most-popular {
+    /* Color verde claro característico. */
+    color: #CAE962;
+    /* Tamaño de fuente ligeramente más grande que el predeterminado. */
+    font-size: 1.1em;
+    /* Texto en negrita. */
+    font-weight: bold;
+    /* Margen inferior para separar del título. */
+    margin-bottom: 10px;
+}
+
+/* Estilos para el título principal "CHAINSAW MAN" */
+.hero-content h1 {
+    /* Tamaño de fuente grande para el encabezado. */
+    font-size: 3em;
+    /* Elimina los márgenes superior e inferior predeterminados, y añade un margen inferior. */
+    margin: 0 0 15px 0;
+    /* Color de texto blanco. */
+    color: white;
+}
+
+/* Estilos para el párrafo de descripción del anime */
+.hero-content .description {
+    /* Tamaño de fuente estándar. */
+    font-size: 1em;
+    /* Altura de línea para mejorar la legibilidad del texto. */
+    line-height: 1.5;
+    /* Margen inferior para separar de las estrellas de calificación. */
+    margin-bottom: 20px;
+    /* Color gris claro para el texto de la descripción. */
+    color: #cccccc;
+}
+
+/* Contenedor de las estrellas de calificación */
+.hero-content .rating {
+    /* Margen inferior para separar de los botones. */
+    margin-bottom: 20px;
+}
+
+/* Estilos para cada icono de estrella */
+.hero-content .star {
+    /* Tamaño de fuente para el icono de estrella. */
+    font-size: 1.5em;
+    /* Color dorado para las estrellas (tanto llenas como vacías por defecto). */
+    color: #FFD700;
+}
+
+/* Estilos específicos para las estrellas "llenas" */
+.hero-content .star.filled {
+    /* Asegura que las estrellas con la clase 'filled' tengan el color dorado. */
+    color: #FFD700;
+}
+
+/* Contenedor de los botones "Watch Now" y "Trailer" */
+.hero-content .buttons {
+    /* Habilita Flexbox para alinear los botones horizontalmente. */
+    display: flex;
+    /* Crea un espacio de 15px entre los botones. */
+    gap: 15px;
+}
+
+/* Estilos base para todos los botones dentro de .hero-content */
+.hero-content button {
+    /* Relleno interno para los botones. */
+    padding: 12px 25px;
+    /* Sin borde alrededor del botón. */
+    border: none;
+    /* Hace que los bordes de los botones sean completamente redondeados. */
+    border-radius: 50px;
+    /* Tamaño de fuente estándar para el texto del botón. */
+    font-size: 1em;
+    /* Cambia el cursor a un puntero al pasar el ratón por encima del botón. */
+    cursor: pointer;
+    /* Habilita Flexbox para centrar el contenido (ícono SVG y texto) dentro del botón. */
+    display: flex;
+    /* Centra verticalmente el contenido dentro del botón. */
+    align-items: center;
+    /* Centra horizontalmente el contenido dentro del botón. */
+    justify-content: center;
+    /* Espacio entre el ícono SVG y el texto del botón. */
+    gap: 8px;
+    /* Aplica una transición suave al color de fondo cuando cambia (ej. al hacer hover). */
+    transition: background-color 0.3s ease;
+}
+
+/* Estilos específicos para el botón "Watch Now" */
+.hero-content .watch-now {
+    /* Color de fondo verde claro. */
+    background-color: #CAE962;
+    /* Color de texto oscuro para contraste. */
+    color: #333;
+    /* Texto en negrita. */
+    font-weight: bold;
+}
+
+/* Efecto hover para el botón "Watch Now" */
+.hero-content .watch-now:hover {
+    /* Tono de verde ligeramente más oscuro al pasar el ratón. */
+    background-color: #b7d159;
+}
+
+/* Color de relleno para el ícono SVG dentro del botón "Watch Now" */
+.hero-content .watch-now svg {
+    /* El ícono hereda el color del texto del botón. */
+    fill: #333;
+}
+
+/* Estilos específicos para el botón "Trailer" */
+.hero-content .trailer {
+    /* Color de fondo oscuro. */
+    background-color: #333;
+    /* Color de texto blanco. */
+    color: white;
+    /* Borde sutil de color gris. */
+    border: 1px solid #555;
+}
+
+/* Efecto hover para el botón "Trailer" */
+.hero-content .trailer:hover {
+    /* Tono de gris más claro al pasar el ratón. */
+    background-color: #555;
 }
